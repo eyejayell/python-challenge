@@ -15,9 +15,9 @@ df.head()
 
 month_count = len(budget_df["Date"].unique())
 total_profit =  df["Profit/Losses"].sum()
-avg_profit = budget_df["Change in Profit"].mean()
-max_profit =  budget_df["Change in Profit"].max()
-min_profit =  budget_df["Change in Profit"].min()
+avg_profit = round(budget_df["Change in Profit"].mean(),2)
+max_profit =  int(budget_df["Change in Profit"].max())
+min_profit =  int(budget_df["Change in Profit"].min())
 
 max_date = df.loc[max_profit,"Date"]
 min_date = df.loc[min_profit,"Date"]
