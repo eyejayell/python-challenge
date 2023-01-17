@@ -11,6 +11,8 @@ budget_df.head()
 df = budget_df.set_index("Change in Profit")
 df.head()
 
+#Swapping between df and budget_df here because there was an issue using df with the "Change in Profit" column - is this because the index was set to a column added after the CSV import?
+
 month_count = len(budget_df["Date"].unique())
 total_profit =  df["Profit/Losses"].sum()
 avg_profit = budget_df["Change in Profit"].mean()
@@ -26,6 +28,13 @@ print(f"Total Profit: {total_profit}")
 print(f"Average Change: {avg_profit}")
 print(f"Greatest Increase in Profits: {max_date} (${max_profit})")
 print(f"Greatest Decrease in Profits: {min_date} (${min_profit})")
+
+with open("output.txt","a") as file:
+    print(f"Total Months: {month_count}", file=file)
+    print(f"Total Profit: {total_profit}", file=file)
+    print(f"Average Change: {avg_profit}",file=file)
+    print(f"Greatest Increase in Profits: {max_date} (${max_profit})",file=file)
+    print(f"Greatest Decrease in Profits: {min_date} (${min_profit})",file=file)
 
 
 # import os
