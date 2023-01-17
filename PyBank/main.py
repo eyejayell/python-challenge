@@ -6,18 +6,26 @@ budget_df = pd.read_csv(budget_path,encoding="utf-8")
 budget_df.head()
 
 budget_df["Change in Profit"] = budget_df["Profit/Losses"].diff()
+budget_df.head()
+
+df = budget_df.set_index("Change in Profit")
+df.head()
 
 month_count = len(budget_df["Date"].unique())
-total_profit =  budget_df["Profit/Losses"].sum()
+total_profit =  df["Profit/Losses"].sum()
 avg_profit = budget_df["Change in Profit"].mean()
 max_profit =  budget_df["Change in Profit"].max()
 min_profit =  budget_df["Change in Profit"].min()
 
-print(month_count)
-print(total_profit)
-print(avg_profit)
-print(max_profit)
-print(min_profit)
+max_date = df.loc[max_profit,"Date"]
+min_date = df.loc[min_profit,"Date"]
+
+
+print(f"Total Months: {month_count}")
+print(f"Total Profit: {total_profit}")
+print(f"Average Change: {avg_profit}")
+print(f"Greatest Increase in Profits: {max_date} (${max_profit})")
+print(f"Greatest Decrease in Profits: {min_date} (${min_profit})")
 
 
 # import os
