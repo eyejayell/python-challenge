@@ -33,7 +33,7 @@ print(f"Average Change: {avg_profit}")
 print(f"Greatest Increase in Profits: {max_date} (${max_profit})")
 print(f"Greatest Decrease in Profits: {min_date} (${min_profit})")
 
-with open("output.txt","a") as file:
+with open("analysis/output.txt","a") as file:
     print(f"Total Months: {month_count}", file=file)
     print(f"Total Profit: {total_profit}", file=file)
     print(f"Average Change: {avg_profit}",file=file)

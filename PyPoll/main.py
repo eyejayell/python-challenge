@@ -2,7 +2,7 @@ import pandas as pd
 
 election_path = "Resources/election_data.csv"
 
-election_df = pd.read_csv(election_path,encoding="utf-8")
+election_df = pd.read_csv(election_path)
 
 
 total_votes = election_df["Ballot ID"].count()
@@ -25,7 +25,6 @@ winner_df = winner_df.reset_index(drop=True)
 
 winner = winner_df["Candidate"].values[0]
 
-print(winner)
 #print results to terminal and to text file
 
 print("Election Results")
@@ -36,7 +35,7 @@ print(vote_total_df.to_string(header=False,index=False))
 print("-------------------------")
 print(f"Winner: {winner}")
 
-with open("output.txt","a") as file:
+with open("analysis/output.txt","a") as file:
     print("Election Results",file=file)
     print("-------------------------",file=file)
     print(f"Total Votes: {total_votes}",file=file)
